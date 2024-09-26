@@ -43,7 +43,7 @@ export default {
         this.weather = null;
         const apiKey = 'fe946225a249b7cf1f11063c774b080d'; // 请替换为你自己的API密钥
         const response = await fetch(
-          `/api/simpleWeather/query?city=${encodeURIComponent(city)}&key=${apiKey}`
+          `/weatherApi/simpleWeather/query?city=${encodeURIComponent(city)}&key=${apiKey}`
         );
         const data = await response.json();
         if (data.error_code === 0) {
