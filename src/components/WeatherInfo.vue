@@ -63,9 +63,12 @@ export default {
 .weather-container {
   margin-top: 20px;
   font-size: 18px;
-  
 }
 .weather-info {
+  font-family: Arial, Helvetica, sans-serif;
   text-align: left; /* 使文本靠左对齐 */
+  font-size: 20px; /* 设置字体大小 */
+  line-height: 1; /* 设置行距 */
+  color: #333; /* 设置文字颜色 */
 }
 </style>

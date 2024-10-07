@@ -67,6 +67,8 @@
   
   <style scoped>
   .calendar-info {
+    line-height: 0.9; /* 设置行距 */
+    font-size: 16px; /* 设置字体大小 */
     text-align: left; /* 使文本靠左对齐 */
   }
   </style>

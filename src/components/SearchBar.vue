@@ -42,7 +42,7 @@ export default {
 <style scoped>
 .date-display {
   margin-bottom: 10px; /* 确保日期和输入框之间有一些间距 */
-  font-size: 16px;
+  font-size: 30px;
   color: #333;
 }
 
