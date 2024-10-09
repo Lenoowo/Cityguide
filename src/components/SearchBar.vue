@@ -13,6 +13,12 @@
 
 <script>
 export default {
+  props: {
+    clear: { // 监控父组件传递的 clear 状态
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       inputCity: '', // 用户输入的城市
@@ -24,7 +30,6 @@ export default {
       const year = this.date.getFullYear();
       const month = String(this.date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
       const day = String(this.date.getDate()).padStart(2, '0');
-
       return `${year}-${month}-${day}`;
     },
   },
@@ -35,9 +40,20 @@ export default {
         this.$emit('dateSelected', this.formattedDate); // 传递格式化的日期到父组件
       }
     },
+    clearInput() {
+      this.inputCity = ''; // 清空输入框
+    },
+  },
+  watch: {
+    clear(newValue) {
+      if (newValue) {
+        this.clearInput(); // 当 clear prop 为 true 时，清空输入框
+      }
+    },
   },
 };
 </script>
+
 
 <style scoped>
 .date-display {
@@ -60,6 +76,7 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  margin-left: 5px; /* 增加按钮间隔 */
 }
 
 button:hover {

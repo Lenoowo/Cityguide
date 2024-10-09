@@ -27,3 +27,11 @@ npm run dev
 ```sh
 npm run build
 ```
+
+调用api参考列表：
+1.聚合数据
+https://www.juhe.cn/docs/api/id/65
+https://www.juhe.cn/docs/api/id/73
+
+2.wiki百科调用
+https://github.com/martin-majlis/Wikipedia-API/
