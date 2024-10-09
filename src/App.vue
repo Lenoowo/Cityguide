@@ -26,7 +26,7 @@
           <WikiInfo :city="city" />
       </div>
       <div v-if="activeComponent === 'map' && city" class="wiki-container">
-        <p>Map content will be displayed here.</p>
+        <TravelInfo :city="city" />
       </div>
     </div>
   </div>
@@ -37,6 +37,8 @@ import SearchBar from './components/SearchBar.vue';
 import WeatherInfo from './components/WeatherInfo.vue';
 import CalendarInfo from './components/CalendarInfo.vue';
 import WikiInfo from './components/WikiInfo.vue';
+import TravelInfo from './components/TravelInfo.vue';
+
 
 export default {
   name: 'App',
@@ -73,6 +75,7 @@ export default {
     WeatherInfo,
     CalendarInfo,
     WikiInfo,
+    TravelInfo,
   },
 };
 </script>
