@@ -1,18 +1,33 @@
 <template>
-
   <div id="app">
     <div class="header">
       <h1>CityGuider</h1>
       <!-- 搜索组件 -->
-      <SearchBar @citySelected="setCity" @dateSelected="setDate" />
+      <SearchBar @citySelected="setCity" @dateSelected="setDate" :city="city" :date="date"/>
     </div>
+    <div class="button-container">
+      <button @click="showContent('weather')">Weather and Calendar</button>
+      <button @click="showContent('news')">News</button>
+      <button @click="showContent('map')">Map</button>
+      <button @click="clearSearch">Clear Search</button> <!-- 清空按钮 -->
+    </div>
+    
     <div class="info-container">
-      <div class="weather-container">
-        <WeatherInfo :city="city" :date="date" />
+      <!-- 根据按钮选择显示不同的组件 -->
+      <div v-if="activeComponent === 'weather' && city && date" class="info-container">
+        <div class="weather-container">
+          <WeatherInfo :city="city" :date="date" />
+        </div>
+        <div class="weather-container">
+          <CalendarInfo :date="date" />
+        </div>
       </div>
-      <div class="weather-container">
-      <CalendarInfo :date="date" />
-    </div>
+      <div v-if="activeComponent === 'news' && city && date" class="weather-container">
+        <p>News content will be displayed here.</p>
+      </div>
+      <div v-if="activeComponent === 'map' && city && date" class="weather-container">
+        <p>Map content will be displayed here.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +43,7 @@ export default {
     return {
       city: '', // 存储输入的城市名称
       date: '', // 存储格式化的日期
+      activeComponent: 'null', // 控制显示的组件，默认为 'weather'
     };
   },
   methods: {
@@ -37,17 +53,24 @@ export default {
     setDate(selectedDate) {
       this.date = selectedDate; // 更新格式化日期
     },
+    showContent(componentName) {
+      this.activeComponent = componentName; // 根据按钮选择要显示的内容
+    },
+    clearSearch() {
+      this.city = ''; // 清空城市
+      this.date = ''; // 清空日期
+      this.activeComponent = 'null'; // 重置显示为默认组件
+    },
   },
   components: {
     SearchBar,
     WeatherInfo,
-    CalendarInfo ,
+    CalendarInfo,
   },
 };
 </script>
 
 <style>
-
 html, body {
   height: 100%;
   margin: 0;
@@ -65,9 +88,7 @@ html, body {
   background-size: cover; 
 }
 
-/* 添加居中和浅绿色背景 */
 .header {
-  /*background-color: #d4edda;  浅绿色背景 */
   padding: 20px 0;
   text-align: center;
   width: 100%;
@@ -78,31 +99,28 @@ html, body {
   box-sizing: border-box;
 }
 .header h1 {
-  color: white; /* 设置字体颜色为白色 */
-  font-family: 'Dancing Script', cursive; /* 设置花体字体 */
-  font-size: 36px; /* 字体大小 */
+  color: white; 
+  font-family: 'Dancing Script', cursive;
+  font-size: 36px;
 }
 .info-container {
-  display: flex; /* 使用 Flexbox 布局 */
-  justify-content: center; /* 水平居中 */
-  gap: 20px; /* 组件间距 */
-  width: 100%; /* 限制宽度 */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
 }
 .weather-container {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 2px solid #42b983; /* 边框颜色 */
-  border-radius: 8px; /* 边框圆角 */
-  padding: 20px; /* 内边距 */
-  margin: 20px 0 0px 10px; /* 上、右、下、左的外边距 */
-  width: 45%; /* 限制宽度 */
+  border: 2px solid #42b983;
+  border-radius: 8px; 
+  padding: 20px; 
+  margin: 20px 0 0px 10px; 
+  width: 45%; 
   height: 20%;
 }
-/* 确保搜索框适应两边 */
-input {
-  width: 60%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
+
+.button-container {
+  margin: 20px 0;
 }
 
 button {
@@ -112,9 +130,10 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  margin: 0 10px;
 }
 
 button:hover {
-  background-color: #358d72;
+  background-color: #369966;
 }
 </style>
