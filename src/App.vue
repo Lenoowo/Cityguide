@@ -1,18 +1,24 @@
 <template>
   <div id="app">
     <div class="header">
-      <h1>CityGuider</h1>
-      <!-- 搜索组件，传递 clearInputFlag -->
+      <img src=".\imgs\logo-title.png" alt="Logo" class="logo" />
       <SearchBar @citySelected="setCity" @dateSelected="setDate" :city="city" :date="date" :clear="clearInputFlag" />
     </div>
     <div class="button-container">
-      <button @click="showContent('weather')">今日天时</button>
-      <button @click="showContent('map')">今日地利</button>
-      <button @click="showContent('news')">今日人和</button>
+      <button @click="showContent('weather')">
+        <img src=".\imgs\weather-logo.png" alt="Weather Logo" class="icon" />气象快报</button>
+      <button @click="showContent('news')">
+        <img src=".\imgs\news-logo.png" alt="Weather Logo" class="icon" />新闻速递</button>     
+      <button @click="showContent('history')">
+        <img src=".\imgs\history-logo.png" alt="Weather Logo" class="icon" />历史人文</button>
+      <button @click="showContent('map')">
+        <img src=".\imgs\map-logo.png" alt="Weather Logo" class="icon" />地图略览</button>
+      <button @click="showContent('images')">
+          <img src=".\imgs\map-logo.png" alt="Weather Logo" class="icon" />眼观丽景</button>
       <button @click="clearSearch">Clear</button> 
     </div>
     
-    <div>
+    <div class="mainpart">
       <!-- 根据按钮选择显示不同的组件 -->
       <div v-if="activeComponent === 'weather' && city" class="info-container">
         <div class="weather-container">
@@ -22,12 +28,21 @@
           <CalendarInfo :date="date" />
         </div>
       </div>
-      <div v-if="activeComponent === 'news' && city" class="wiki-container">
+      <div v-if="activeComponent === 'history' && city" class="wiki-container">
           <WikiInfo :city="city" />
       </div>
-      <div v-if="activeComponent === 'map' && city" class="wiki-container">
+      <div v-if="activeComponent === 'news' && city" class="wiki-container">
         <TravelInfo :city="city" />
-      </div>
+      </div> 
+      <div v-if="activeComponent === 'map' && city" class="info-container">
+        <BaiduMap :city="city" />
+      </div> 
+      <div v-if="activeComponent === 'images' && city" class="info-container">
+        <CityImages :city="city" />
+      </div> 
+    </div>
+    <div class="day-words-container">
+      <DayWords :date="date"/>
     </div>
   </div>
 </template>
@@ -38,7 +53,9 @@ import WeatherInfo from './components/WeatherInfo.vue';
 import CalendarInfo from './components/CalendarInfo.vue';
 import WikiInfo from './components/WikiInfo.vue';
 import TravelInfo from './components/TravelInfo.vue';
-
+import DayWords from './components/DayWords.vue';
+import BaiduMap from './components/BaiduMap.vue';
+import CityImages from './components/CityImages.vue';
 
 export default {
   name: 'App',
@@ -76,6 +93,9 @@ export default {
     CalendarInfo,
     WikiInfo,
     TravelInfo,
+    DayWords,
+    BaiduMap,
+    CityImages,
   },
 };
 </script>
@@ -98,7 +118,10 @@ html, body {
   background: url('.\imgs\bg.jpg') no-repeat center center fixed; 
   background-size: cover; 
 }
-
+.logo {
+  width: 200px; /* 根据需求设置 logo 的宽度 */
+  height: auto; /* 保持纵横比 */
+}
 .header {
   padding: 20px 0;
   text-align: center;
@@ -108,20 +131,24 @@ html, body {
   left: 0;
   right: 0;
   box-sizing: border-box;
+  font-family: 'Lobster', cursive;
 }
 .header h1 {
-  color: white; 
-  font-family: 'Dancing Script', cursive;
+  color: rgb(255, 255, 255); 
+  font-family: 'Lobster', cursive;
   font-size: 36px;
+}
+.mainpart{
+  margin-bottom: 100px; /* 确保与页脚留出空间 */
 }
 .info-container {
   display: flex;
-  justify-content: center; /* 水平居中 */
-  gap: 20px; /* 子元素间距 */
-  width: 100%; /* 或者设置成一个适合的固定宽度 */
-  max-width: 1200px; /* 设置最大宽度以避免过宽 */
-  margin: 0 auto; /* 自动左右边距以实现居中 */
-  min-width: 1000px; /* 设置最小宽度以避免过窄 */
+  justify-content: center; 
+  gap: 20px; 
+  width: 100%; 
+  max-width: 1200px;
+  margin: 0 auto;
+  min-width: 1000px; 
 }
 
 .weather-container {
@@ -129,30 +156,30 @@ html, body {
   border: 2px solid #42b983;
   border-radius: 8px; 
   padding: 20px; 
-  margin: 20px; /* 调整外边距 */
-  width: 85%; /* 可以适当调整以满足需求 */
-  height: auto; /* 根据内容自适应高度 */
+  margin: 10px; 
+  width: 85%; 
+  height: auto;
 }
 .wiki-container {
   background-color: rgba(255, 255, 255, 0.8);
   border: 2px solid #42b983;
   border-radius: 8px; 
-  width: 90%; /* 可以适当调整以满足需求 */
-  height: auto; /* 根据内容自适应高度 */
-  margin: 0 auto; /* 添加这一行以使其居中 */
-  display: flex; /* 如果需要使用flex布局 */
-  justify-content: center; /* 水平居中内容 */
-  padding: 20px; /* 添加一些内边距，使内容不紧贴边框 */
+  width: 90%; 
+  height: auto; 
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: center; 
+  padding: 20px; 
 }
 
 .button-container {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #42b983;
+  background-color: #24cd92;
   color: white;
   border: none;
   cursor: pointer;
@@ -160,6 +187,23 @@ button {
 }
 
 button:hover {
-  background-color: #369966;
+  
+  background-color: #369966c7;
+}
+
+.day-words-container{
+  background-image: url('.\imgs\footer.png'); 
+  bottom: 0;
+  background-size: cover; 
+  background-position: center; 
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+}
+.icon {
+  width: 18px; /* 根据需求设置图标的宽度 */
+  height: auto; /* 保持纵横比 */
+  margin-right: 4px; /* 添加右侧间距，分隔图标和文字 */
 }
 </style>

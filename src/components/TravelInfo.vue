@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>旅游信息</h1>
+      <h1>文旅新闻</h1>
       
       <div v-if="loading">加载中...</div>
       <div v-if="error">{{ error }}</div>

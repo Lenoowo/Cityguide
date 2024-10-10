@@ -33,19 +33,18 @@
     watch: {
       city(newCity) {
         if (newCity) {
-          this.fetchWikiData(newCity); // 当城市变化时重新获取 Wiki 信息
+          this.fetchWikiData(newCity); 
         }
       },
     },
     mounted() {
-      // 组件加载后，如果有城市名称，则调用 fetchWikiData
       if (this.city) {
         this.fetchWikiData(this.city);
       }
     },
     methods: {
       async fetchWikiData(city) {
-        const cityWithSuffix = `${city}市`; // 在这里也加上“市”
+        const cityWithSuffix = `${city}市`; 
         if (!cityWithSuffix) {
           this.error = "请输入一个有效的城市名称。";
           return;

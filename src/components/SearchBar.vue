@@ -4,7 +4,7 @@
     <input
       v-model="inputCity"
       @keyup.enter="searchCity"
-      placeholder="输入城市名称"
+      placeholder="输入城市名称(例：北京)"
       class="search-bar"
     />
     <button @click="searchCity">查询</button>
@@ -59,11 +59,11 @@ export default {
 .date-display {
   margin-bottom: 10px; /* 确保日期和输入框之间有一些间距 */
   font-size: 30px;
-  color: #333;
+  color: #d9e7f3;
 }
 
 .search-bar {
-  width: 60%;
+  width: 55%;
   padding: 10px;
   margin: 10px;
   font-size: 16px;

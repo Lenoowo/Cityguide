@@ -35,3 +35,9 @@ https://www.juhe.cn/docs/api/id/73
 
 2.wiki百科调用
 https://github.com/martin-majlis/Wikipedia-API/
+
+3.百度地图开放平台
+https://lbsyun.baidu.com/
+
+4.天聚数行
+https://www.tianapi.com/console/
