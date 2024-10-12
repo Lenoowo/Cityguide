@@ -1,34 +1,26 @@
-# webapiwork
+# Cityguide
+## 1. 准备项目环境
+安装 Node.js 和 npm
+确保已经安装了 Node.js 和 npm（Node.js 包管理器），如果没有安装，可以从官网下载安装 Node.js，npm 会自动安装。
 
-This template should help get you started developing with Vue 3 in Vite.
+## 2. 克隆项目代码
+将项目代码克隆到本地：
 
-## Recommended IDE Setup
+    git clone https://github.com/Lenoowo/Cityguide.git
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 3. 安装项目依赖
+在项目目录中运行
 
-## Customize configuration
+    npm install
+来安装所有的依赖包
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 4. 运行项目
+安装完依赖后，通过以下命令启动 Vue 项目：
 
-## Project Setup
+    npm run dev
+运行后，开发服务器会启动，并在终端中显示访问地址（默认是 http://localhost:5173）。在浏览器中访问这个地址，将看到 "Cityguide" 应用界面。
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-调用api参考列表：
+## 调用api参考列表：
 1.聚合数据
 https://www.juhe.cn/docs/api/id/65
 https://www.juhe.cn/docs/api/id/73
@@ -40,7 +32,8 @@ https://github.com/martin-majlis/Wikipedia-API/
 https://lbsyun.baidu.com/
 
 4.天聚数行
-https://www.tianapi.com/console/
+https://www.tianapi.com/apiview/129
+https://www.tianapi.com/apiview/15
 
 5.unsplashapi调用
 https://status.unsplash.com/
