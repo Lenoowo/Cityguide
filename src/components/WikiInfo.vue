@@ -4,7 +4,6 @@
       <div v-if="city">
         <h2>城市：{{ cityWithSuffix }}</h2> <!-- 使用衍生的城市名称 -->
         <div v-if="wikiData" class="wiki-info">
-          <h3>{{ wikiData.title }}</h3>
           <p v-html="wikiData.summary"></p>
         </div>
         <div v-if="error">
@@ -79,6 +78,7 @@
   <style scoped>
   .wiki-info {
     margin-top: 20px;
+    text-align: left; /* 使文本靠左对齐 */
   }
   </style>
   

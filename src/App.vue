@@ -14,7 +14,7 @@
       <button @click="showContent('map')">
         <img src=".\imgs\map-logo.png" alt="Weather Logo" class="icon" />地图略览</button>
       <button @click="showContent('images')">
-          <img src=".\imgs\map-logo.png" alt="Weather Logo" class="icon" />眼观丽景</button>
+          <img src=".\imgs\pic-logo.png" alt="Weather Logo" class="icon" />眼观丽景</button>
       <button @click="clearSearch">Clear</button> 
     </div>
     
