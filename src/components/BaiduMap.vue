@@ -18,10 +18,8 @@
         const map = new BMap.Map(this.$refs.map);
         const city = this.city;
   
-        // 设置地图中心点为传入的城市
-        map.centerAndZoom(city, 12); // 12 是缩放级别
+        map.centerAndZoom(city, 12); // 12 -缩放级别
   
-        // 添加地图控件
         map.addControl(new BMap.NavigationControl());
         map.addControl(new BMap.ScaleControl());
   

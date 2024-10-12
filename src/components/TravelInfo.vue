@@ -83,19 +83,19 @@ li {
 }
 
 img {
-  width: 100%; /* 设置图片宽度为100% */
-  max-width: 400px; /* 设置最大宽度，避免图片过大 */
-  height: auto; /* 保持图片比例 */
+  width: 100%; 
+  max-width: 400px; 
+  height: auto;
 }
 
 p {
-  text-align: left; /* 文字向左对齐 */
-  margin: 10px 0; /* 增加段落之间的间距 */
+  text-align: left; 
+  margin: 10px 0; 
 }
 
 a {
-  display: inline-block; /* 使链接成为块级元素，便于点击 */
-  margin-top: 5px; /* 添加顶部间距 */
+  display: inline-block; 
+  margin-top: 5px; 
 }
 </style>
 

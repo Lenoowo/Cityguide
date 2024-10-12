@@ -15,7 +15,7 @@
         <img src=".\imgs\map-logo.png" alt="Weather Logo" class="icon" />地图略览</button>
       <button @click="showContent('images')">
           <img src=".\imgs\pic-logo.png" alt="Weather Logo" class="icon" />眼观丽景</button>
-      <button @click="clearSearch">Clear</button> 
+      <button @click="clearSearch">清除结果</button> 
     </div>
     
     <div class="mainpart">
@@ -63,16 +63,16 @@ export default {
     return {
       city: '', // 存储输入的城市名称
       date: '', // 存储格式化的日期
-      activeComponent: 'null', // 控制显示的组件
+      activeComponent: 'weather', // 控制默认显示组件
       clearInputFlag: false, // 控制清空状态
     };
   },
   methods: {
     setCity(selectedCity) {
-      this.city = selectedCity; // 更新城市名称
+      this.city = selectedCity; 
     },
     setDate(selectedDate) {
-      this.date = selectedDate; // 更新格式化日期
+      this.date = selectedDate; 
     },
     showContent(componentName) {
       this.activeComponent = componentName; // 根据按钮选择要显示的内容
@@ -80,7 +80,7 @@ export default {
     clearSearch() {
       this.city = ''; // 清空城市
       this.date = ''; // 清空日期
-      this.activeComponent = 'null'; // 重置显示为默认组件
+      this.activeComponent = 'null'; 
       this.clearInputFlag = true; // 触发清空输入框
       this.$nextTick(() => {
         this.clearInputFlag = false; // 清空后重置状态
@@ -202,8 +202,8 @@ button:hover {
   right: 0; 
 }
 .icon {
-  width: 18px; /* 根据需求设置图标的宽度 */
-  height: auto; /* 保持纵横比 */
-  margin-right: 4px; /* 添加右侧间距，分隔图标和文字 */
+  width: 18px;
+  height: auto; 
+  margin-right: 4px; 
 }
 </style>

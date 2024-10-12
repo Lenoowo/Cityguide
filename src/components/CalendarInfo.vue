@@ -32,8 +32,8 @@
     },
     methods: {
       fetchCalendar() {
-        const apiKey = '9e25221b1e04c92ecf6d3ce58e44f4ac'; // 请替换为你自己的API密钥
-        const formattedDate = this.date; // 从props获取的日期
+        const apiKey = '9e25221b1e04c92ecf6d3ce58e44f4ac'; 
+        const formattedDate = this.date; 
         this.error = null; // 重置错误信息
   
         // 使用完整的 API URL
@@ -46,18 +46,18 @@
           })
           .then((data) => {
             if (data.error_code === 0) {
-              this.calendarData = data.result; // 设置黄历数据
+              this.calendarData = data.result;
             } else {
-              //this.error = `获取失败: ${data.reason}`; // 设置错误信息
+              //this.error = `获取失败: ${data.reason}`; 
             }
           })
           .catch((error) => {
-           // this.error = `请求失败: ${error.message}`; // 捕获请求错误
+           // this.error = `请求失败: ${error.message}`; 
           });
       },
     },
     watch: {
-      date: 'fetchCalendar', // 当日期变化时，重新获取黄历
+      date: 'fetchCalendar', 
     },
     mounted() {
       this.fetchCalendar(); // 组件挂载后获取黄历
@@ -67,9 +67,9 @@
   
   <style scoped>
   .calendar-info {
-    line-height: 0.9; /* 设置行距 */
-    font-size: 16px; /* 设置字体大小 */
-    text-align: left; /* 使文本靠左对齐 */
+    line-height: 0.9; 
+    font-size: 16px; 
+    text-align: left; 
   }
   </style>
   

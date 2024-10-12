@@ -25,8 +25,8 @@ export default {
   },
   data() {
     return {
-      weather: null, // 存储天气信息
-      error: null,   // 存储错误信息
+      weather: null, 
+      error: null,  
     };
   },
   watch: {
@@ -37,7 +37,6 @@ export default {
     },
   },
   mounted() {
-    // 组件加载后，如果有城市名称，则调用 fetchWeather
     if (this.city) {
       this.fetchWeather(this.city);
     }
@@ -55,11 +54,9 @@ export default {
         const response = await fetch(
           `/weatherApi/simpleWeather/query?city=${city}&key=${apiKey}`
         );
-        const data = await response.json();
-        console.log("API 数据: ", data); // 调试用
+        const data = await response.json();      
         if (data.error_code === 0) {
-          this.weather = data.result.realtime; // 这里应该更新 weather 数据
-          console.log("实时天气数据: ", this.weather); // 调试用
+          this.weather = data.result.realtime; 
         } else {
           this.error = data.reason || "无法获取天气信息，请检查城市名称。";
         }

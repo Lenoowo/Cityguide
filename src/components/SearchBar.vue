@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 .date-display {
-  margin-bottom: 10px; /* 确保日期和输入框之间有一些间距 */
+  margin-bottom: 10px; 
   font-size: 30px;
   color: #d9e7f3;
 }
@@ -76,7 +76,7 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  margin-left: 5px; /* 增加按钮间隔 */
+  margin-left: 5px; 
 }
 
 button:hover {

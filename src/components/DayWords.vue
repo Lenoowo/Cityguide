@@ -23,7 +23,7 @@ export default {
     getCurrentDate() {
       const today = new Date();
       const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以加1
+      const month = String(today.getMonth() + 1).padStart(2, '0'); 
       const day = String(today.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`; // 格式化为 YYYY-MM-DD
     },
@@ -49,8 +49,8 @@ export default {
 
 <style scoped>
 .p {
-  font-size: 30px; /* 设置字体大小 */
-  text-align: left; /* 使文本靠左对齐 */
+  font-size: 30px;
+  text-align: left; 
 }
 .footer {
   height: 30px; 
